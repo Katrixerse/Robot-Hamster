@@ -1,1 +1,78 @@
 Full command list for robot hamster:
+🐹 Misc/Fun Commands 🐹
+
+h!rps [rock/paper/scissors (choice)] - Will make you go against the bot.
+h!wur - Play a game of would you rather
+h!poll - Create a poll! (Administrator Only)
+h!wiki [pagename] - Will send you a link to a wikipedia page.
+h!donate - This command is for the generous people!
+h!meme [NEW] - Grabs a random meme for your enjoyment.
+h!imgur [query] [NEW] - Searches imgur for you, must give what you want it to search.
+h!lyrics [Artist] [Song Name] - Will give lyrics to a song of your choice as long as it's on genius.
+h!doggo - Gives a cute photo of a doggo to the user.
+h!urban [query] - Gives definition from urban dictionary
+h!roblox [username] - Will retrieve the ROBLOX username of your choice.
+h!lmgtfy [query] is for people when they ask a stupid question, do lmgtfy and let google answer it for them.
+h!nick [NEW] - Changes the nickname for the bot, e.g. transitioning from Hamster Bot > Hammy
+h!addition numbers e.g. h!addition 5 2 Bot Output = 7 - Addition command, works like eval except able to be used by any normal user.
+h!cb [message to bot] - Clever Bot API integration makes the bot have a scarily realistic personality.
+h!divide numbers e.g. h!divide 6 2 Bot Output = 3 - Divide command, works like eval except able to be used by any normal user.
+h!multiply numbers e.g. h!multiply 5 2 Bot Output = 10 - Multiplication command, works like eval except able to be used by any normal user.
+h!subtract numbers e.g. h!subtract 5 2 Bot Output = 3 - Subtraction command, works like eval except able to be used by any normal user.
+h!userinfo - This command is different from h!info because it gives/retrieves another users info.
+h!roll - Rolls a random number 0-100, completely randomized.
+h!invite - Sends a invite to invite the beloved hamster-robot hybrid bot to your server!
+h!say - bot will respond with
+h!tableflip - Does a table flip!
+h!unflip - Unflips the table, put that back!
+h!russianroulette - Randomly generated odds, will you win or die at the gun?
+h!ship - Ships two or more users and gives a randomly generated match outcome, or you can just say its “meant to be”.
+h!8ball - Gives a random 8ball answer!
+h!botinfo - Bot will respond with info on bot.
+h!serverinfo - Bot will respond with info about the current server.
+h!info - Bot will respond with info about your discord acc.
+h!ping - Bot will respond with pong! .
+h!coinflip - Bot will respond with heads or tails.
+h!lenny - Does a lenny face!
+h!disabledshrug - You'll see.. you'll see..
+h!tableflip - Flips a table!
+h!unflip - Unflips the table, put that back!
+h!f - Press f to pay respect!
+h!contactinfo - Gives contact info about the bots authors/creators.
+h!uptime - Gives info on the uptime of the bot, specifically when it was last restarted.
+h!botstatus - Tells you if the bots online or not, mainly used by devs to check if commands are working properly.
+h!reportbug - Will give you a github link for hammy then just click new issue and type in the bug you found, finally submit new issue.
+
+🐹_Moderation/Server Administration Commands:_ 🐹
+h!warn @Someone [reason] - Mutes the user specified with the given reason. ‘logs’ txt channel is required to use this command.
+h!ban @Someone [reason] - Ban the user specified with the given reason. ‘logs’ txt channel is required to use this command.
+h!unban @Someone [reason] - Unban the user specified with the given reason. ‘logs’ txt channel is required to use this command.
+h!kick @Someone [reason] - Kick the user specified with the given reason. ‘logs’ txt channel is required to use this command
+h!mute @Someone [reason] - Mutes the user specified with the given reason. ‘logs’ txt channel is required to use this command, and you must have a role called ‘muted’
+h!unmute @Someone [reason] - Unmutes the user specified with the given reason. ‘logs’ txt channel is required to use this command, and you must have a role called ‘muted’
+h!announcement [string/text] - A custom embedded announcement built in through the bot. Announces what you say after the bot, works with links and mentioning within <string/text>
+h!softban @Someone [reason] - Bans and then unbans a user to purge all their messages.
+h!antiraid start/stop - Starts or stops the antiraid protection.
+
+YouTube Music Commands: (This command is in beta testing/test build so it is not up to par to the final expected version, come back to the commands list later and expect to see more from youtube music cmds.)
+h!play - will play [songname] in the voice channel.
+h!queue - Will say the current queue.
+h!skip - Will skip the current song.
+
+🐹 NSFW Commands 🐹:
+h!nsfw - Posts a image or gif that is nsfw. 18+ or mature audiences only. Must be in a channel with NSFW enabled.
+h!hentai - Posts a image or gif of hentai, 18+ or mature audiences only. Must be in a channel with NSFW enabled.
+
+🐹 Level Related Commands 🐹:
+
+h!level Gives you your level with Robot Hamsters progressive leveling system.
+h!dailyxp Gives you free xp daily (250) [only able to use every 24 hours]
+
+🐹 Gamble Related Commands 🐹:
+
+h!bank @Someone Gives @Somones hammys gamble bank info.
+h!25 <bet> will roll the dice if you get higher then 25 you win x1.5 your bet.
+h!50 <bet> will roll the dice if you get higher then 50 you win x2 your bet.
+h!75 <bet> will roll the dice if you get higher then 75 you win x3 your bet.
+h!99 <bet> will roll the dice if you get higher then 99 you win x4 your bet.
+h!slots <bet> will roll the slots if you get 3 of the same in a row you win x2 your bet. 
