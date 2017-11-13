@@ -54,11 +54,6 @@ h!announcement [string/text] - A custom embedded announcement built in through t
 h!softban @Someone [reason] - Bans and then unbans a user to purge all their messages.
 h!antiraid start/stop - Starts or stops the antiraid protection.
 
-YouTube Music Commands: (This command is in beta testing/test build so it is not up to par to the final expected version, come back to the commands list later and expect to see more from youtube music cmds.)
-h!play - will play [songname] in the voice channel.
-h!queue - Will say the current queue.
-h!skip - Will skip the current song.
-
 🐹 NSFW Commands 🐹:
 h!nsfw - Posts a image or gif that is nsfw. 18+ or mature audiences only. Must be in a channel with NSFW enabled.
 h!hentai - Posts a image or gif of hentai, 18+ or mature audiences only. Must be in a channel with NSFW enabled.
