@@ -9,8 +9,6 @@ const maxlevel = "500";
 const DopplerID = "130515926117253122";
 const LawlietID = "201848192357236736";
 const DarwinID = "307472480627326987";
-const sql = require("sqlite");
-sql.open("./score.sqlite");
 
 var cooldownUsers = [];
 var cooldownUsers2 = [];
@@ -76,24 +74,6 @@ bot.on("message", async (msg) => {
 
 	let args = msg.content.split(" ").slice(1);
 	const Username = msg.author.tag;
-
-  /*sql.get(`SELECT * FROM scores WHERE userId ="${msg.author.id}"`).then(row => {
-    if (!row) {
-      sql.run("INSERT INTO scores (userId, userName, points, level) VALUES (?, ?, ?, ?)", [msg.author.id, 1, 0]);
-    } else {
-      let curLevel = Math.floor(0.1 * Math.sqrt(row.points + 1));
-      if (curLevel > row.level) {
-        row.level = curLevel;
-        sql.run(`UPDATE scores SET points = ${row.points + 1}, level = ${row.level}, userName = ${msg.author.username} WHERE userId = ${msg.author.id}`);
-      }
-      sql.run(`UPDATE scores SET points = ${row.points + 1} WHERE userId = ${msg.author.id}`);
-    }
-  }).catch(() => {
-    console.error;
-    sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, userName TEXT, points INTEGER, level INTEGER)").then(() => {
-      sql.run("INSERT INTO scores (userId, userName, points, level) VALUES (?, ?, ?, ?)", [msg.author.id, 1, 0]);
-		});
-	});  */
 
 	let userData = XP[msg.author.id];
 	if (!userData) userData = {XP: 0, level: 0, Messagecount: 0, User: 0};
@@ -273,4 +253,4 @@ if (msg.content.startsWith(botcode + "leaderboard" || botcode + "lb")) {
 	console.log("Data Writen")
 	
 });
-bot.login("MzMwMDQ0ODA5NjUxODE0NDEy.DDmHWg.i4S2L86t-ovA4sMHYJx5_vGPdhw")
+bot.login('your bot token');
