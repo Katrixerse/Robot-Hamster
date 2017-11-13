@@ -79,18 +79,18 @@ const removeCooldown3 = ((userId, timeInSeconds) => {
 //client.on start
 
 client.on('ready', () => {
-  console.log("Hamster is in: " + (Math.round(client.guilds.size + 5)) + " servers.");
+  console.log("Hamster is in: " + client.guilds.size + " servers.");
  // client.user.setGame(`h!help - In ${client.guilds.size} guilds!`)
-  client.user.setPresence({ game: { name: `h!help - In ${(Math.round(client.guilds.size * 2 + 5))} servers`, type: 0 } });
+  client.user.setPresence({ game: { name: `h!help - In ${client.guilds.size} servers`, type: 0 } });
   console.log("game has been set/bot is now ready")
   superagent.post(`https://discordbots.org/api/bots/330044809651814412/stats`)
   .set('Authorization', 'token')
-  .send({ server_count: (Math.round(client.guilds.size * 2 + 5)) })
+  .send({ server_count: (client.guilds.size) })
   .then(console.log('Updated discordbots.org status.'))
   .catch(e => console.warn('dbots.org down spam @oliy'));
   superagent.post(`https://bots.discord.pw/api/bots/330044809651814412/stats`)
   .set('Authorization', 'token')
-  .send({ server_count:  (Math.round(client.guilds.size * 2 + 5)) })
+  .send({ server_count: (client.guilds.size) })
   .then(console.log('Updated bots.discord.pw status.'))
   .catch(e => console.warn('bots.discord.pw down spam @oliy'));
 });
@@ -138,7 +138,7 @@ client.on("guildMemberRemove", async (member) => {
 
   client.on('messageUpdate', (message, UpdatedMessage) => {
     if (message.author.bot) return;
-     if (message.content === UpdatedMessage.content) return
+    if (message.content === UpdatedMessage.content) return
     if (message.channel.type !== 'text') return;
     if (message.content > 1000) return;
     if (message.content <= 0) return;
@@ -188,12 +188,11 @@ client.on('guildDelete', guild =>{
       // client.on end besides message message
 
       client.on('uncaughtException', (err) => {
-        let errorMsg = err.stack.replace(new RegExp(`${__dirname}\/`, 'g'), './');
-        console.log("error", "Uncaught Exception", client.user, errorMsg);
+        console.log("error", "Uncaught Exception", err);
       });
        
       client.on("unhandledRejection", (err) => {
-        console.error("Uncaught Promise Error", client.user, err);
+        console.log("Uncaught Promise Error", err);
       });
 
 client.on('message', async (message) => {
@@ -548,7 +547,7 @@ if (command === "urban") {
 
   if (command === "rps") {
     const choices = ['paper', 'rock', 'scissors'];
-   let choice = args.join(' ');
+   let choice = message.content.toLowerCase().split(" ").slice(1); // Make so caps dont matter 
         const response = choices[Math.floor(Math.random() * choices.length)];
         if (choice === 'rock') {
             if (response === 'rock') return message.reply('I Picked Rock! Its A Tie.');
@@ -563,7 +562,7 @@ if (command === "urban") {
             else if (response === 'paper') return message.reply('I Picked Paper! Damn I Lost');
             else if (response === 'scissors') return message.reply('I Picked Scissors! Its A Tie');
         } else {
-            return message.reply('There was a error try again.');
+            return message.reply('That was not a valid choice please try again');
         }
   } else
 
@@ -571,7 +570,7 @@ if (command === "urban") {
    const embed = new Discord.RichEmbed()
    .setColor(0x738BD7)
    .setDescription(`**${message.author.username}** has pressed F to pay their respects. `)
-   message.channel.send(embed)
+   message.channel.send({embed})
   } else
 
   if (command === "announcement") {
@@ -605,7 +604,7 @@ if (command === "urban") {
     client.user.setGame(argresult);
     message.reply("It has been set father Lawliet!");
     } else {
-      message.reply("You do not have the substancial permissions. Creator of the bot only. :x:");
+     message.reply("You do not have the substancial permissions. Creator of the bot only. :x:");
     }
   } else
 
@@ -627,9 +626,10 @@ if (command === "urban") {
   message.channel.send('Bots: ' + `${message.guild.members.filter(member => member.user.bot).size} | Members: ${message.guild.memberCount}`)
  }
 
- if (command === "shardcount") {
-  message.channel.send("Shard count: " + client.shard.count)
- }
+ // If your just starting out then you dont need to worry about sharding until your bot is in 2,500 servers
+ //if (command === "shardcount") {
+ // message.channel.send("Shard count: " + client.shard.count)
+ //}
 
  // If your just starting out then you dont need to worry about sharding until your bot is in 2,500 servers
  //if (command === "shardinfo") {
@@ -651,17 +651,6 @@ if (command === "urban") {
   } else
 
   if (command === "help") {
-    let choice = args.join(' ');
-    if (!message.channel.send === "Cannot send messages to this user") return message.channel.send("You have dms from servers turned off");
-    const prefixfive = PREF[message.guild.id].prefix;
-    const usage = new Discord.RichEmbed()
-    .setColor(0x738BD7)
-    .setThumbnail(client.user.avatarURL)
-    .addField("Usage 1: ", "h!help all - for all cmds")
-    .addField("Usage 2: ", "h!help <command> - usage example for <command>")
-    .addField("Example: ", "h!help imgur");
-    if (choice.length < 1) return message.channel.send(usage).catch(console.error);
-         if (choice === 'all') {
              const help1 = require('./assets/json/help1.json');
              const help2 = require('./assets/json/help2.json');
              const help3 = require('./assets/json/help3.json');
@@ -673,180 +662,6 @@ if (command === "urban") {
              message.author.send(help4).catch(console.error);
              message.author.send(help5).catch(console.error);
              message.channel.send(message.author.username + ", I have DMed you all the commands!")
-         } else if (choice === 'rps') {
-             const usage2 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", + prefixfive + "rps <choice>")
-             .addField("Example: ", "h!rps rock");
-             message.channel.send(usage2)
-         } else if (choice === 'imgur') {
-             const usage3 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!imgur <query>")
-             .addField("Example: ", "h!imgur minecraft");
-             message.channel.send(usage3)
-         } else if (choice === 'lyrics') {
-             const usage4 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!lyrics <Artist> <Song Name>")
-             .addField("Example: ", "h!lyrics eminem rap god");
-             message.channel.send(usage4)
-         } else if (choice === 'roblox') {
-             const usage5 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!roblox <username>")
-             .addField("Example: ", "h!roblox xunbreakablex");
-             message.channel.send(usage5)
-         } else if (choice === 'lmgtfy') {
-             const usage6 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!lmgtfy <query>")
-             .addField("Example: ", "h!lmgtfy memes");
-             message.channel.send(usage6)
-         } else if (choice === 'nick') {
-             const usage7 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!nick <text>")
-             .addField("Example: ", "h!nick hammy");
-             message.channel.send(usage7)
-         } else if (choice === 'cb') {
-             const usage8 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!cb <message to bot>")
-             .addField("Example: ", "h!cb Whats up hammy?");
-             message.channel.send(usage8)
-         } else if (choice === 'urban') {
-             const usage9 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!urban <query>")
-             .addField("Example: ", "h!urban They");
-             message.channel.send(usage9)
-         } else if (choice === 'wiki') {
-             const usage10 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!wiki <pagename>")
-             .addField("Example: ", "h!wiki Discord");
-             message.channel.send(usage10)
-         } else if (choice === 'say') {
-             const usage11 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!say <text>")
-             .addField("Example: ", "h!say Hello everyone");
-             message.channel.send(usage11)
-         } else if (choice === 'achieve') {
-             const usage12 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!achieve <text>")
-             .addField("Example: ", "h!achieve Roasted someone");
-             message.channel.send(usage12)
-         } else if (choice === 'feedback') {
-             const usage13 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!feedback <text>")
-             .addField("Example: ", "h!feedback Hammy is a great bot");
-             message.channel.send(usage13)
-         } else if (choice === 'warn') {
-             const usage14 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!warn @Someone <reason>")
-             .addField("Example: ", "h!warn @Someone was annoying to everyone else");
-             message.channel.send(usage14)
-         } else if (choice === 'ban') {
-             const usage15 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!ban @Someone <reason>")
-             .addField("Example: ", "h!ban @Someone Broke multiple rules");
-             message.channel.send(usage15)
-         } else if (choice === 'unban') {
-             const usage16 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!unban @Someone <reason>")
-             .addField("Example: ", "h!unban @Someone asked for a second chance");
-             message.channel.send(usage16)
-         } else if (choice === 'kick') {
-             const usage17 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!kick @Someone <reason>")
-             .addField("Example: ", "h!kick @Someone Rude to staff members");
-             message.channel.send(usage17)
-         } else if (choice === 'mute') {
-             const usage18 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!mute @Someone <reason>")
-             .addField("Example: ", "h!mute @Someone spamming in chat");
-             message.channel.send(usage18)
-         } else if (choice === 'unmute') {
-             const usage19 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!unmute @Someone <reason>")
-             .addField("Example: ", "h!unmute @Someone giving him a second chance");
-             message.channel.send(usage19)
-         } else if (choice === 'announcement') {
-             const usage20 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!announcement <text>")
-             .addField("Example: ", "h!announcement New rule for the server");
-             message.channel.send(usage20)
-         } else if (choice === 'softban') {
-             const usage21 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!softban @Someone <reason>")
-             .addField("Example: ", "h!softban @Someone temp ban");
-             message.channel.send(usage21)
-         } else if (choice === 'antiraid') {
-             const usage22 = new Discord.RichEmbed()
-             .setColor(0x738BD7)
-             .setThumbnail(client.user.avatarURL)
-             .addField("Usage: ", "h!antiraid <start/stop>")
-             .addField("Example: ", "h!antiraid start")
-             .addField("Example: ", "h!antiraid stop");
-             message.channel.send(usage22)
-            } else if (choice === 'play') {
-              const usage23 = new Discord.RichEmbed()
-              .setColor(0x738BD7)
-              .setThumbnail(client.user.avatarURL)
-              .addField("Usage: ", "h!play <string/youtubelink>")
-              .addField("Example: ", "h!play day n nite");
-              message.channel.send(usage23)
-            } else if (choice === 'setwelcome') {
-              const usage24 = new Discord.RichEmbed()
-              .setColor(0x738BD7)
-              .setThumbnail(client.user.avatarURL)
-              .addField("Usage: ", "h!setwelcome <text>")
-              .addField("Example: ", "h!setwelcome Welcome %MENTION% to %GUILDNAME%")
-              .addField("Placeholders: ", "%MENTION% - Will mention the user \n%NAME% - Will get the users name \n%GUILDNAME% - Will get the guild name \n%MEMBERCOUNT% - Will get the membercount for the server");
-              message.channel.send(usage24)
-            } else if (choice === 'setleave') {
-              const usage25 = new Discord.RichEmbed()
-              .setColor(0x738BD7)
-              .setThumbnail(client.user.avatarURL)
-              .addField("Usage: ", "h!setleave <text>")
-              .addField("Example: ", "h!setleave Goodbye %NAME% from %GUILDNAME% now only %MEMBERCOUNT% left")
-              .addField("Placeholders: ", "%MENTION% - Will mention the user \n%NAME% - Will get the users name \n%GUILDNAME% - Will get the guild name \n%MEMBERCOUNT% - Will get the membercount for the server");
-              message.channel.send(usage25)
-         } else {
-             return message.reply("Can't get usage example for: " + choice + ". command may be invalid");
-         }
    } else
 
   if (command === "authorinfo") {
