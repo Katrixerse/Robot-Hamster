@@ -1,5 +1,6 @@
 ﻿const Discord = require("discord.js");
 const superagent = require('superagent')
+const rp = require('request-promise-native')
 const client = new Discord.Client();
 // owner ids for feedback
 const DopplerID = "130515926117253122"
@@ -289,7 +290,6 @@ if (command === "setwlchannel") {
 } else
   
       if (command === "wur") {
-              const superagent = require('superagent');
               const { body } = await superagent
              .get('http://www.rrrather.com/botapi');
             const embed = new Discord.RichEmbed()
@@ -331,7 +331,6 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
 
 
  if (command === "ass") {
-  const rp = require('request-promise-native')
     return rp.get('http://api.obutts.ru/butts/0/1/random').then(JSON.parse).then(function(res)  {
         return rp.get({
             url:'http://media.obutts.ru/' + res[0].preview,
@@ -343,7 +342,6 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
 }
 
  if (command === "tits") {
-  const rp = require('request-promise-native')
     return rp.get('https://rule34.xxx//index.php?page=dapi&s=post&q=index').then(JSON.parse).then(function(res)  {
         return rp.get({
             url:'img.rule34.xxx/images/' + res[0].preview,
@@ -359,7 +357,6 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
 //animal commands
 
     if (command === "cat") {
-      const superagent = require("superagent"); // makes it require superagent, make sure you installed it
       const { body } = await superagent // defines body and awaits superagent
       .get('http://random.cat/meow'); // Will get the api link
       const embed  = new Discord.RichEmbed() // Defines the new richembed
