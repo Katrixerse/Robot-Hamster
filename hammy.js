@@ -4,7 +4,7 @@ const client = new Discord.Client();
 // owner ids for feedback
 const DopplerID = "130515926117253122"
 const LawlietID = "201848192357236736"
-const botversion = "3.0.2"
+const botversion = "1.0.0"
 const lynx = "336331925612396547"
 const fs = require("fs");
 let PREF = JSON.parse(fs.readFileSync('./prefix.json', 'utf8'));
@@ -856,7 +856,7 @@ if (command === "urban") {
     .addField("Created by: ", "Lawliet#7010, King Crowley#3837")
     .addField("Bot is in: ", client.guilds.size + " servers")
     .addField("Bot uses: ", "Discord.js");
-    message.channel.send(embed);
+    message.channel.send({embed});
   } else
 
   if (command === "botinfo") {
@@ -898,21 +898,21 @@ if (command === "urban") {
      .addField("Server Channels: ",  message.guild.channels.size, true)
      .addField("Server Verification Level: ", `${verificationLevels[message.guild.verificationLevel]}`, true)
      .addField("Server Region: ", message.guild.region, true);
-     message.channel.send(embed);
+     message.channel.send({embed});
 } else
 
 if (command === "serveremojis") {
   const emoji = message.guild.emojis;
   const embed = new Discord.RichEmbed()
   .addField("Server Emojis", emoji.map((e) => e).join(', '))
-  message.channel.send(embed)
+  message.channel.send({embed})
 }
 
 if (command === "serverroles") {
   const role = message.guild.roles;
   const embed = new Discord.RichEmbed()
   .addField("Server Roles", role.map((e) => e).join(', '))
-  message.channel.send(embed)
+  message.channel.send({embed})
 }
 
 if (command === "achieve") {
@@ -955,14 +955,14 @@ const embed = new Discord.RichEmbed()
 .setColor(0x738BD7)
 .setDescription("Heres a meme for: " + message.author.username)
 .setImage(meme)
-message.channel.send(embed); 
+message.channel.send({embed}); 
   } else 
 
 if (command === "uptime") {
    const embed = new Discord.RichEmbed()
-  .addField("Bot Uptime: ", (Math.round(client.uptime / (1000 * 60 * 60 *60)) % 24) + " days, " + (Math.round(client.uptime / (1000 * 60 * 60)) % 60) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds.")
+  .addField("Bot Uptime: ", (Math.round(client.uptime / (1000 * 60 * 60 *60)) % 60) + " days, " + (Math.round(client.uptime / (1000 * 60 * 60)) % 60) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds.")
   .setColor(0x738BD7)
-   message.channel.send(embed);
+   message.channel.send({embed});
   } else
 
    if (command === "botnick") {
@@ -975,7 +975,7 @@ if (command === "uptime") {
         const embed = new Discord.RichEmbed()
         .setColor(0x738BD7)
         .addField("Bot username set successfully!", username + " is now the nickname for the bot :white_check_mark:");
-        message.reply({embed}).catch(console.error);
+        message.channel.send({embed}).catch(console.error);
     }
 } else
 
@@ -984,7 +984,7 @@ if (command === "uptime") {
     const embed = new Discord.RichEmbed()
     .setColor(0x738BD7)
     .setDescription(`https://discordapp.com/oauth2/authorize?client_id=330044809651814412&scope=bot&permissions=527662206`);
-    message.channel.send(embed)
+    message.channel.send({embed})
  } else
 
  if (command === "roast") {
@@ -996,7 +996,7 @@ var roasts = roast[Math.floor(Math.random() * roast.length)];
     const embed = new Discord.RichEmbed()
     .setColor(0x738BD7)
     .setDescription(user.username + ", "+ roasts);
-    message.channel.send(embed)
+    message.channel.send({embed})
   } else
 
   if (command === "feedback") {
@@ -1008,7 +1008,7 @@ var roasts = roast[Math.floor(Math.random() * roast.length)];
       return;
     }
     cooldownUsers.push(message.author.id);
-    removeCooldown(message.author.id, 60);
+    removeCooldown(message.author.id, 3600);
     client.users.get(DopplerID).send("Doppler, a user has given feedback on the bot: " + feedback + " | Sent in by: " + message.author.username);
     client.users.get(LawlietID).send("Lawliet, a user has given feedback on the bot: " + feedback + " | Sent in by: " + message.author.username);
     message.reply("thanks for choosing to give feedback it has been sent!")
@@ -1317,9 +1317,9 @@ if (command === "unban") {
 if (command === "createrole") {
   if (message.member.hasPermission("MANAGE_ROLES")) {
   let guild = message.member.guild;
-  let rolename = args.slice(0).join(' ');
-  let color2 = args.slice(1)(' ');
-  console.log(rolename + " | " + color2)
+  let rolename = args.slice(1).join('');
+  let color2 = args.slice(2).join('');
+  console.log(rolename + " | " + color2 + " was created")
   if (rolename.length < 1) return message.reply('You must give a name for the role. :x:');
   if (color2.length < 1) return message.reply('You must give a color for the role. :x:');
   guild.createRole({name:`${rolename}`, color:`${color2}`});
@@ -1405,7 +1405,6 @@ if (command === "ban") {
 
   const embed = new Discord.RichEmbed()
     .setColor(0x738BD7)
-    //.setDescription("Case: " + caseNum + "Action: ")
     .addField('Moderated User:', `${user.user.username}#${user.user.discriminator} (${user.user.id})`)
     .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
     .addField('Actions Taken:', 'Ban')
@@ -1427,14 +1426,12 @@ let reason = args.slice(1).join(' ') || `Moderator didn't give a reason.`;
 if (message.mentions.users.size < 1) return message.channel.send(usage).catch(console.error);
 let user = message.guild.member(message.mentions.users.first());
 if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant warn that member. they are the same level as you or higher. :x:');
-//if (!Setlogmaster[message.guild.id]) Setlogmaster[message.guild.id] = {Logchannel : "logs"}
 let modlog = message.guild.channels.find('name', "logs");
 if (reason.length < 1) return message.channel.send(usage).catch(console.error);
 message.channel.send("***" + user.user.username + " has been successfully warned! :white_check_mark:***" )
 user.send("You have recieved a warning from: " + message.author.username + " for: " + reason)
 const embed = new Discord.RichEmbed()
 .setColor(0x738BD7)
-//.setDescription("Case: " + CaseNum[message.guild.id].Casenumber + " Action: warn")
 .addField('Moderated User:', `${user.user.username}#${user.user.discriminator} (${user.user.id})`)
 .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
 .addField('Actions Taken:', 'Warn')
@@ -1456,7 +1453,6 @@ if (command === "kick") {
     if (message.mentions.users.size < 1) return message.channel.send(usage).catch(console.error);
     let user = message.guild.member(message.mentions.users.first());
   if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant kick that member. they are the same level as you or higher. :x:');
-  //if (!Setlogmaster[message.guild.id]) Setlogmaster[message.guild.id] = {Logchannel : "logs"}
   let modlog = message.guild.channels.find('name', "logs");
   if (reason.length < 1) return message.channel.send(usage).catch(console.error);
   message.channel.send("***The User has been successfully kicked! :white_check_mark:***")
@@ -1474,6 +1470,7 @@ if (command === "kick") {
   }
 } else
 
+  // Didnt finsh this but maybe someone will fix it up or ill get to it someday
 /*if (command === "setlogs") {
   let reason = args.slice(0).join(' ')
   if (reason.length < 1) return message.channel.send("Need to provide a channel for the new logs to go to").catch(console.error);
@@ -1482,25 +1479,12 @@ if (command === "kick") {
   message.channel.send("I have set the new logs channel to " + reason)
 } */
 
-//end moderation cmds
-
-if (command === "perms") {
-  let user = message.mentions.users.first();
-  const role = message.guild.pe
-  const friendly = this.client.config.permLevels.find(l => l.level === level).name;
-  message.reply(`Your permission level is: ${level} - ${friendly}`);
-}
-
 if (command === "foo") {
   message.reply(' bar!');
 } else
 
 if (command === "bar") {
   message.reply(' food!');
-} else
-
-if (command === "kys") {
-  message.reply(' Why would i do that?');
 } else
 
 if (command === "tableflip") {
@@ -1523,54 +1507,21 @@ if (command === "shrug") {
   message.reply("¯\\_(ツ)_/¯")
 } else
 
-/*if (command === "slap") {
-  const Canvas = require('canvas-constructor');
-  const snek = require('snekfetch');
-  const fsn = require('fs-nextra');
-
-  const getSlapped = async (slapper, slapped) => {
-    const plate = await fsn.readFile('./assets/images/image_slap.png');
-    const pngSlapper = slapper.replace(/\.gif.+/g, '.png');
-    const pngSlapped = slapped.replace(/\.gif.+/g, '.png');
-    const Slapper = await snek.get(pngSlapper);
-    const Slapped = await snek.get(pngSlapped);
-    return new Canvas(950, 475)
-      .addImage(plate, 0, 0, 950, 475)
-      .addImage(Slapper.body, 410, 107, 131, 131, { type: 'round', radius: 66 })
-      .restore()
-      .addImage(Slapped.body, 159, 180, 169, 169, { type: 'round', radius: 85 })
-      .restore()
-      .toBuffer();
-  }
-  try {
-    const message = await message.channel.send('Finding Robin...');
-    const slapped = message.mentions.users.first().avatarURL;
-    const slapper = message.author.avatarURL;
-    const result = await getSlapped(slapper, slapped);
-    await message.channel.send({ files: [{ attachment: result, name: 'slapped.png' }] });
-    await message.delete();
-  } catch (error) {
-    throw error;
-  }
-} else */
-
 if (command === "info") {
   let user = message.mentions.users.first();
-const status2 = message.author.presence.status;
-const untaggedembed = new Discord.RichEmbed()
+    const status2 = message.author.presence.status;
+    const untaggedembed = new Discord.RichEmbed()
   .setThumbnail(message.author.avatarURL)
   .setColor(0x738BD7)
   .addField("Account Username:", `${message.author.tag}`)
   .addField("User ID:", message.author.id)
   .addField("Discord user was created on:", message.author.createdAt.toDateString())
-  //.addField("Discord user joined on:", message.guild.joinedAt.toDateString())
-  //.addField("Playing: ", games2)
   .addField("Last Message: ", message.author.lastMessage)
   .addField("User Status: ", status2)
   .addField("Nickname:", message.member.displayName) || 'None';
-  if (message.mentions.users.size < 1) return message.channel.send(untaggedembed)
+  if (message.mentions.users.size < 1) return message.channel.send({untaggedembed})
   if (!user === '<@330044809651814412>') return message.channel.send("Can't get info for Robot Hamster")
-  const status = user.presence.status;;
+  const status = user.presence.status;
   // If a user is tagged
   const taggedembed = new Discord.RichEmbed()
   .setThumbnail(user.avatarURL)
@@ -1582,29 +1533,11 @@ const untaggedembed = new Discord.RichEmbed()
   .addField("Discord user was created on:", user.createdAt.toDateString())
   .addField("User Status: ", status)
   .addField("Playing: ", user.presence.game !== null ? user.presence.game.name : "Nothing",)
-  message.channel.send(taggedembed);
+  message.channel.send({taggedembed});
 } else
 
-if (command === "translate") {
-  const yandexKey = "trnsl.1.1.20170720T065935Z.b4a9d720b92c785d.2a32ad3c7ae011a45a247aa765c82f2eaebdb0f5"
-const { text, to, from } = args.join(" ");
-        const { body } = await superagent
-            .get('https://translate.yandex.net/api/v1.5/tr.json/translate')
-            .query({
-                key: yandexKey,
-                text,
-                lang: from ? `${from}-${to}` : to
-            });
-        const lang = body.lang.split('-');
-        const embed = new Discord.RichEmbed()
-            .setColor(0x00AE86)
-            .addField(`❯ From: ${codes[lang[0]]}`,
-                text)
-            .addField(`❯ To: ${codes[lang[1]]}`,
-                body.text[0]);
-        return message.channel.send(embed);
-    } else
-
+  
+  // Can use if you have cleverbot api
 /*if (command === "cb") {
     client.write(message.content, (response) => {
       message.channel.startTyping()
@@ -1617,11 +1550,7 @@ const { text, to, from } = args.join(" ");
       }, Math.random() * (1 - 3) + 1 * 1000);
     });
    } else */
-
-   if (command === "cb") {
-     message.reply(" you need to be a patreon subscriber at https://www.patreon.com/bePatron?c=1243886&rid=2034882 to use this command")
-   }
-
+  
 if (command === "avatar") {
   let user = message.mentions.users.first();
   if (message.mentions.users.size < 1) return message.reply('You must mention someone to get their avatar. :x:').catch(console.error);
@@ -1647,14 +1576,14 @@ if (command === "avatar") {
         .addField(":inbox_tray: Input: ", `\`\`\`${code}\`\`\``)
         .addField(":outbox_tray: output: ", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
         .setFooter(`Executed in: ${Date.now() - message.createdTimestamp}ms`)
-      message.channel.send(embed)
+      message.channel.send({embed})
     } catch (err) {
       const embed = new Discord.RichEmbed()
       .setColor(0x738BD7)
       .addField(":inbox_tray: Input: ", `\`\`\`${code}\`\`\``)
       .addField(":outbox_tray: output: ", `\`\`\`${clean(err)}\`\`\``)
       .setFooter(`Executed in: ${Date.now() - message.createdTimestamp}ms`)
-    message.channel.send(embed)
+    message.channel.send({embed})
     }
   }
 
