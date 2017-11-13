@@ -1,0 +1,18 @@
+[
+":hamster: Misc Commands 2 :hamster:",
+"```h!8ball - Gives a random 8ball answer!",
+"h!botinfo - Bot will respond with info on bot.",
+"h!serverinfo - Bot will respond with info about the current server.",
+"h!info - Bot will respond with info about your discord account.",
+"h!ping - Bot will respond with pong! .",
+"h!feedback [text] - Will give feedback on the bot! .",
+"h!contactinfo - Gives contact info about the bots authors/creators.",
+"h!uptime - Gives info on the uptime of the bot, specifically when it was last restarted.",
+"h!botstatus - Tells you if the bots online or not, mainly used by devs to check if commands are working properly.",
+"h!addition numbers e.g. h!addition 5 2 Bot Output = 7 - Addition command, works like eval except able to be used by any normal user.",
+"h!divide numbers e.g. h!divide 6 2 Bot Output = 3 - Divide command, works like eval except able to be used by any normal user.",
+"h!multiply numbers e.g. h!multiply 5 2 Bot Output = 10 - Multiplication command, works like eval except able to be used by any normal user.",
+"h!subtract numbers e.g. h!subtract 5 2 Bot Output = 3 - Subtraction command, works like eval except able to be used by any normal user.",
+"h!changelog - will send the changelog for the latest hammy update!.",
+"h!userinfo - This command is different from h!info because it gives/retrieves another users info. \n ```"
+]

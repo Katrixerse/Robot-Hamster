@@ -1,0 +1,18 @@
+[
+    ":hamster: NSFW Commands:  :hamster:",
+    "```h!hentai - Posts a image or gif of hentai, 18+ or mature audiences only. Must be in a channel with NSFW enabled.",
+    "h!ass - Posts a image or gif that contains ass. 18+ or mature audiences only. Must be in a channel with NSFW enabled.",
+    "h!tits - Posts a image or gif that contains tits. 18+ or mature audiences only. Must be in a channel with NSFW enabled.",
+    "h!nsfw - Posts a image or gif that is nsfw. 18+ or mature audiences only. Must be in a channel with NSFW enabled.``` \n",
+    ":hamster: Level Related Commands:  :hamster:",
+    "```h!level Gives you your level with Robot Hamsters progressive leveling system.",
+    "h!dailyxp Gives you free xp daily (250) [only able to use every 24 hours]``` \n",
+    ":hamster: Gamble Related Commands:  :hamster:",
+    "```h!bank @Someone Gives @Somones hammys gamble bank info.",
+    "h!transfer @Someone <amount> will transfer <amount> to @someones bank (there is a 15% fee on transfers)",
+    "h!25 <bet> will roll the dice if you get higher then 25 you win x1.5 your bet.",
+    "h!50 <bet> will roll the dice if you get higher then 50 you win x2 your bet.",
+    "h!75 <bet> will roll the dice if you get higher then 75 you win x3 your bet.",
+    "h!99 <bet> will roll the dice if you get higher then 99 you win x4 your bet.",
+    "h!slots <bet> will roll the slots if you get 3 of the same in a row you win x2 your bet. ```\n"
+    ]

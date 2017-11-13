@@ -1,0 +1,22 @@
+[
+    ":hamster: Moderation/Server Administration Commands:  :hamster:",
+    "```h!warn @Someone [reason] - Mutes the user specified with the given reason. ‘logs’ txt channel is required to use this command.",
+    "h!ban @Someone [reason] - Ban the user specified with the given reason. ‘logs’ txt channel is required to use this command.",
+    "h!unban @Someone [reason] - Unban the user specified with the given reason. ‘logs’ txt channel is required to use this command.",
+    "h!kick @Someone [reason] - Kick the user specified with the given reason. ‘logs’ txt channel is required to use this command",
+    "h!mute @Someone [reason] - Mutes the user specified with the given reason. ‘logs’ txt channel is required to use this command, and you must have a role called ‘muted’",
+    "h!unmute @Someone [reason] - Unmutes the user specified with the given reason. ‘logs’ txt channel is required to use this command, and you must have a role called ‘muted’",
+    "h!announcement [string/text] - A custom embedded announcement built in through the bot. Announces what you say after the bot, works with links and mentioning within <string/text>",
+    "h!softban @Someone [reason] - Bans and then unbans a user to purge all their messages.",
+    "h!setwelcome [text] - Sets the new welcome message to [text].",
+    "h!setleave [text] - Sets the new leave message to [text].",
+    "h!enablewl - Enables welcome/leave messages [enabled by default].",
+    "h!disablewl - Disables welcome/leave messages.",
+    "h!setwlchanel [channelname] - Sets what channel the welcome/leave messages will go [default is welcome].",
+    "h!enableauto/disableauto - Will enable/disable auto moderation.",
+    "h!enableinvite/disableinvite - Will enable/disable auto anti invite moderation.",
+    "h!enableswear/disableswear - Will enable/disable auto anti swear moderation.",
+    "h!enablelinks/disablelinks - Will enable/disable auto anti site links moderation",
+    "h!setprefix [text] - Will set the new guild prefix for the bot to [text]",
+    "h!antiraid start/stop - Starts or stops the antiraid protection. \n ```"
+        ]

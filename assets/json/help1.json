@@ -1,0 +1,20 @@
+[
+    ":hamster: Fun Commands :hamster:",
+    "```h!rps [rock/paper/scissors (choice)] - Will make you go against the bot.",
+    "h!wur - Play a game of would you rather",
+    "h!meme - Grabs a random meme for your enjoyment.",
+    "h!imgur [query] - Searches imgur for you, must give what you want it to search.",
+    "h!lyrics [Artist] [Song Name] - Will give lyrics to a song of your choice as long as it's on genius.",
+    "h!doggo - Gives a cute photo of a doggo to the user.",
+    "h!roblox [username] - Will retrieve the ROBLOX username of your choice.",
+    "h!lmgtfy [query] is for people when they ask a stupid question, do lmgtfy and let google answer it for them.",
+    "h!nick [text] - Changes the nickname for the bot, e.g. transitioning from Hamster Bot > Hammy",
+    "h!cb [message to bot] - Clever Bot API integration makes the bot have a scarily realistic personality.",
+    "h!roll - Rolls a random number 0-100, completely randomized.",
+    "h!coinflip - Bot will respond with heads or tails.",
+    "h!lenny - Does a lenny face!",
+    "h!disabledshrug - You'll see.. you'll see..",
+    "h!shrug - Bot does a shrug",
+    "h!tableflip/h!unflip - Flips a table!/Unflips the table, put that back!",
+    "h!f - Press f to pay respect! \n ```"
+        ]

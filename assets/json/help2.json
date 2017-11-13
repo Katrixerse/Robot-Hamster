@@ -1,0 +1,15 @@
+[
+    ":hamster: Misc Commands :hamster:",
+    "```h!urban [query] - Gives definition from urban dictionary",
+    "h!poll - Create a poll! (Administrator Only)",
+    "h!wiki [pagename] - Will send you a link to a wikipedia page.",
+    "h!donate - This command is for the generous people!",
+    "h!invite - Sends a invite to invite the beloved hamster-robot hybrid bot to your server!",
+    "h!say [text] - bot will respond with <text>",
+    "h!achieve [text] - Will respond will a minecraft achieve says [text]",
+    "h!avatar @Someone - Will get @Someones avatar on discord",
+    "h!russianroulette - Randomly generated odds, will you win or die at the gun?",
+    "h!ship - Ships two or more users and gives a randomly generated match outcome, or you can just say its “meant to be”.",
+    "h!clean - Will clean up the channel from hammys messages”.",
+    "h!reportbug - Hammy gives you a link please use this to report hammys bugs.```"
+        ]
