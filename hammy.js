@@ -288,11 +288,7 @@ if (command === "setwlchannel") {
       WelcomeM[message.guild.id].Welcomechannel = newprefix
       message.reply(" i have set the new welcome/leave channel to: " + newprefix)
 } else
-
- if (command === "serverinvite") {
-   // do nothing yet
- }
-
+  
       if (command === "wur") {
               const superagent = require('superagent');
               const { body } = await superagent
@@ -307,23 +303,6 @@ if (command === "setwlchannel") {
          m.react('🅱');
      });
    } else
-
-   if (command === "giveaway") {
-    const giveawayusers = [];
-    const superagent = require('superagent');
-    const { body } = await superagent
-   .get('http://www.rrrather.com/botapi');
-  const embed = new Discord.RichEmbed()
-  .setTitle(`"${body.title}" Choice A Or B?`)
-  .setURL(body.link)
-  .setColor(0x738BD7)
-  .setDescription(`${body.choicea} OR ${body.choiceb}?`);
-   message.channel.send({embed}).then(m => {
-m.react('🅰');
-m.react('🅱');
-message.re
-});
-} else
 
    //nsfw commands
 
@@ -389,7 +368,18 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
       .setTitle("Here is cat image for, " + message.author.username) // sets the embed title
       .setImage(body.file) // sets the embed image
       message.channel.send({embed}) // finally sends the embed
-      } else
+    } else
+        
+         
+    if (command === "doggo") {
+      var doggos = require('./assets/json/doggo.json');
+      var doggo = doggos[Math.floor(Math.random() * doggos.length)];
+      const embed = new Discord.RichEmbed()
+      .setColor(0x738BD7)
+      .setDescription("Heres a cute doggo for: " + message.author.username)
+      .setImage(doggo)
+       message.channel.send(embed);
+    } else
        
        // End animal commands
 
@@ -528,15 +518,11 @@ if (command === "urban") {
               "embed": {
                 "url": json.permalink,
                 "color": 0x738BD7,
-                "author": {
-                  "name": "Urban Dictionary",
-                  "icon_url": message.guild.iconURL
-                },
                 "fields": [{
-                  "name": "**Definition**",
+                  "name": "Definition",
                   "value": json.definition
                 }, {
-                  "name": "**Example**",
+                  "name": "Example",
                   "value": json.example
                 }],
               }
@@ -645,16 +631,17 @@ if (command === "urban") {
   message.channel.send("Shard count: " + client.shard.count)
  }
 
- if (command === "shardinfo") {
-   const embed = new Discord.RichEmbed()
-   .setColor(0x738BD7)
-  .addField("Shards running: ", client.shard.count, true)
-  .addField("Shard ID: ", client.shard.id + 1 + "\n")
-  .addField("Shards Servering: ", (Math.round(client.guilds.size + 5)) + " servers.", true)
-  .addField("Shards Helping: ", client.channels.size + " channels", true)
-  .addField("Shards Serving: ", client.users.size + " users", true);
-  message.channel.send(embed)
- } else
+ // If your just starting out then you dont need to worry about sharding until your bot is in 2,500 servers
+ //if (command === "shardinfo") {
+ //  const embed = new Discord.RichEmbed()
+ //  .setColor(0x738BD7)
+ // .addField("Shards running: ", client.shard.count, true)
+ // .addField("Shard ID: ", client.shard.id + 1 + "\n")
+ // .addField("Shards Servering: ", (Math.round(client.guilds.size + 5)) + " servers.", true)
+//  .addField("Shards Helping: ", client.channels.size + " channels", true)
+// .addField("Shards Serving: ", client.users.size + " users", true);
+//  message.channel.send(embed)
+// } else
 
   if (command === "ping") {
     const embed = new Discord.RichEmbed()
@@ -867,17 +854,9 @@ if (command === "urban") {
     .setColor(0x738BD7)
     .setThumbnail(client.iconURL)
     .addField("Created by: ", "Lawliet#7010, King Crowley#3837")
-    .addField("Bot is in: ", (Math.round(client.guilds.size * 2 + 5)) + " servers")
+    .addField("Bot is in: ", client.guilds.size + " servers")
     .addField("Bot uses: ", "Discord.js");
     message.channel.send(embed);
-  } else
-
-if (command === "contactinfo") {
-  const embed = new Discord.RichEmbed()
-  .setColor(0x738BD7)
-  .addField("**" + message.author.username + "**, thank you for using our discord bot!", " It means the world to us, and we are even more excited to see that you want to learn more about the creators, so here you are:")
-  .addField("Created by: ", "Lawliet#3646, Doppler#3837");
-message.channel.send(embed)
   } else
 
   if (command === "botinfo") {
@@ -891,27 +870,17 @@ message.channel.send(embed)
     .addField("Bot's ID: ", "330044809651814412", true)
     .addField("Created by: ", "Lawliet#3646, King Crowley#3837")
     .addField("Bot's uptime: ", (Math.round(client.uptime / (1000 * 60 * 60 *24)) % 30) + " days, " + (Math.round(client.uptime / (1000 * 60 * 60)) % 24) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds.")
-    //.addField("Member Count: ", memcount.map((e) => e).join(" "))
-    .addField("Shards running: ", client.shard.count, true)
-    .addField("Shard ID: ", client.shard.id + 1, true)
-    .addField("Shards Helping: ", (Math.round(client.guilds.size + 5)) + " servers.", true)
-    .addField("Shards Helping: ", client.channels.size + " channels", true)
-    .addField("Shards Helping: ", client.users.size + " users", true)
+    //.addField("Shards running: ", client.shard.count, true)
+    //.addField("Shard ID: ", client.shard.id + 1, true)
+    //.addField("Shards Helping: ", (Math.round(client.guilds.size + 5)) + " servers.", true)
+    //.addField("Shards Helping: ", client.channels.size + " channels", true)
+    //.addField("Shards Helping: ", client.users.size + " users", true)
+    // ^ Dont need this again unless sharding and bots in 2,500 servers
     .addField("Website: ", "http://robot-hamster.win")
     .addField("Bot Version: ", botversion, true)
     .addField("Library: ", "Discord.js",true);
-    message.channel.send(embed);
+    message.channel.send({embed});
   } else
-
-if (command === "changelog") {
- var changelog = [
-  ":hamster: Changelog for: "+ botversion +" :hamster:",
-  "```Added usage examples to moderation cmds",
-  "Added memory process to botinfo cmd",
-  "Added days to uptime cmd and uptime in botinfo```"
- ];
-  message.reply(changelog).catch(console.error);
-}
 
     if (command === "serverinfo") {
      const verificationLevels = ['None', 'Low', 'Medium', 'Insane', 'Extreme'];
@@ -972,29 +941,11 @@ const superagent = require('superagent')
      .setTitle(":hamster: Robot Hamster - Poll :hamster:")
      .setDescription(`A poll has begun! React to this message to choose! The poll is: "**${sayMessage}**"!`)
       message.channel.send("@everyone ")
-     message.channel.send(embed).then(m => {
+     message.channel.send({embed}).then(m => {
          m.react('✅');
          m.react('❌');
      });
    }
- } else
-
- if(command === "temp") {
-   const { base, to, amount } = args;
-        if (base === to) {
-            return message.say(`Converting ${base} to ${to} is the same value.`);
-        } else if (base === 'celsius') {
-            if (to === 'fahrenheit') return message.say(`${amount}°C is ${(amount * 1.8) + 32}°F.`);
-            else if (to === 'kelvin') return message.say(`${amount}°C is ${amount + 273.15}°K.`);
-        } else if (base === 'fahrenheit') {
-            if (to === 'celsius') return message.say(`${amount}°F is ${(amount - 32) / 1.8}°C.`);
-            else if (to === 'kelvin') return message.say(`${amount}°F is ${(amount + 459.67) * (5 / 9)}°K.`);
-        } else if (base === 'kelvin') {
-            if (to === 'celsius') return message.say(`${amount}°K is ${amount - 273.15}°C.`);
-            else if (to === 'fahrenheit') return message.say(`${amount}°K is ${(amount * 1.8) - 459.67}°F.`);
-        } else {
-          message.channel.send("There was a error try again.")
-        }
  } else
 
 if (command === "meme") {
@@ -1006,17 +957,6 @@ const embed = new Discord.RichEmbed()
 .setImage(meme)
 message.channel.send(embed); 
   } else 
- 
- if (command === "doggo") {
-var doggos = require('./assets/json/doggo.json');
-var doggo = doggos[Math.floor(Math.random() * doggos.length)];
-const embed = new Discord.RichEmbed()
-.setColor(0x738BD7)
-.setDescription("Heres a cute doggo for: " + message.author.username)
-.setImage(doggo)
-    message.channel.send(embed);
-  } else
-
 
 if (command === "uptime") {
    const embed = new Discord.RichEmbed()
@@ -1706,14 +1646,14 @@ if (command === "avatar") {
         .setColor(0x738BD7)
         .addField(":inbox_tray: Input: ", `\`\`\`${code}\`\`\``)
         .addField(":outbox_tray: output: ", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
-        .setFooter(`Executed in: ${Date.now() - message.createdTimestamp - 20}ms`)
+        .setFooter(`Executed in: ${Date.now() - message.createdTimestamp}ms`)
       message.channel.send(embed)
     } catch (err) {
       const embed = new Discord.RichEmbed()
       .setColor(0x738BD7)
       .addField(":inbox_tray: Input: ", `\`\`\`${code}\`\`\``)
       .addField(":outbox_tray: output: ", `\`\`\`${clean(err)}\`\`\``)
-      .setFooter(`Executed in: ${Date.now() - message.createdTimestamp - 20}ms`)
+      .setFooter(`Executed in: ${Date.now() - message.createdTimestamp}ms`)
     message.channel.send(embed)
     }
   }
