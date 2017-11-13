@@ -15,11 +15,6 @@ const CodyID = "207423946344235008"
 
 // End blacklist
 
- //api keys start
-
-
-//api keys end
-
 // cooldown start
 
 var cooldownUsers = [];
@@ -307,7 +302,7 @@ if (command === "setwlchannel") {
             .setURL(body.link)
             .setColor(0x738BD7)
             .setDescription(`${body.choicea} OR ${body.choiceb}?`);
-             message.channel.send(embed).then(m => {
+             message.channel.send({embed}).then(m => {
          m.react('🅰');
          m.react('🅱');
      });
@@ -323,7 +318,7 @@ if (command === "setwlchannel") {
   .setURL(body.link)
   .setColor(0x738BD7)
   .setDescription(`${body.choicea} OR ${body.choiceb}?`);
-   message.channel.send(embed).then(m => {
+   message.channel.send({embed}).then(m => {
 m.react('🅰');
 m.react('🅱');
 message.re
@@ -381,66 +376,22 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
     });
  }
 
-//nsfw cmds emd
+//nsfw cmds end
 
 //animal commands
 
-    if (command === "booksearch") {
-      const rp = require('superagent')
-     rp.get('https://www.googleapis.com/books/v1/volumes?q=' + (args.join('+')) + '&key=AIzaSyASouNYt64amYA7RX79iVp0PBUOse3GxOA').then(JSON.parse);
-    const body = await superagent
-    try {
-      var search = (args.join(' '));
-    } catch (err) {
-      return send("**There were no results for this search term**");
-    }
-    if (!search || !search.first || typeof search.first !== "function") return;
-    search.first(function (json) {
-      if (json) {
-        if (!json.definition || !json.example) return;
-        if (json.definition.length > 1000) json.definition = json.definition.substr(0, 1000);
-        if (json.example.length > 1000) json.example = json.example.substr(0, 1000);
-        message.channel.send("", {
-          "embed": {
-            "title": "**" + args.join(' ') + "**",
-            "url": json.permalink,
-            "color": 0x738BD7,
-            "author": {
-              "name": "Urban Dictionary",
-              "icon_url": message.guild.iconURL
-            },
-            "fields": [{
-              "name": "**Definition**",
-              "value": json.definition
-            }, {
-              "name": "**Example**",
-              "value": json.example
-            }],
-          }
-        })
-      } else {
-        send("**There were no results for this search term**")
-      }
-    });
-    } else
-
     if (command === "cat") {
-      const superagent = require("superagent");
-      const { body } = await superagent
-      .get('http://random.cat/meow');
-      const embed  = new Discord.RichEmbed()
-      .setColor(0x738BD7)
-      .setTitle("Here is cat image for, " + message.author.username)
-      .setImage(body.file)
-      message.channel.send(embed)
+      const superagent = require("superagent"); // makes it require superagent, make sure you installed it
+      const { body } = await superagent // defines body and awaits superagent
+      .get('http://random.cat/meow'); // Will get the api link
+      const embed  = new Discord.RichEmbed() // Defines the new richembed
+      .setColor(0x738BD7) // sets the embeds color use hex codes not rgb
+      .setTitle("Here is cat image for, " + message.author.username) // sets the embed title
+      .setImage(body.file) // sets the embed image
+      message.channel.send({embed}) // finally sends the embed
       } else
-
-    /* if (command === "doggo") {
-      const { body } = await superagent
-      .get('http://thedogapi.co.uk/api/v1/dog');
-      message.channel.send("Here is a doggo pic for: " + message.author.username)
-      message.channel.send("test" + body.url)
-    } */
+       
+       // End animal commands
 
     if (command === "lottery") {
         const lottery = Math.floor(Math.random() * 100) + 1;
@@ -501,7 +452,7 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
   .setDescription("Thank you for considering donating, the bots funding costs A LOT of money, so any bit of money would help our discord bot stay alive, thank you and bot on! :hamster:")
   .setColor("0x738BD7")
   .addField("Patreon:", "https://www.patreon.com/robothamster")
-  message.channel.sendEmbed(embed);
+  message.channel.send({embed});
  } else
 
 
@@ -510,7 +461,7 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
     const embed = new Discord.RichEmbed()
     .setColor(0x738BD7)
     .setDescription(`**${message.author.username}** says ` + (args.join(' ')))
-    message.channel.send(embed)
+    message.channel.send({embed})
   } else
 
 // All link gen commands
@@ -521,7 +472,7 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
         const embed = new Discord.RichEmbed()
         .setColor(0x738BD7)
         .setDescription(`Here you go, **${message.author.username}**: http://lmgtfy.com/?q=` + (args.join('+')))
-        message.channel.send(embed)
+        message.channel.send({embed})
   } else
 
   if (command === "imgur") {
@@ -530,7 +481,7 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
          const embed = new Discord.RichEmbed()
          .setColor(0x738BD7)
          .setDescription(`Here you go, **${message.author.username}**: http://imgur.com/search?q=` + (args.join('+')))
-         message.channel.send(embed)
+         message.channel.send({embed})
    } else
   
       if(command === "roblox") {
@@ -547,7 +498,7 @@ var nsfw = nsfws[Math.floor(Math.random() * nsfws.length)];
               .setDescription("User ID: " + result.body.Id)
               .setFooter("Profile Link: " + `https://web.roblox.com/users/${data}/profile`)
               .setThumbnail("http://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&Format=Png&username=" + saybot);
-              message.channel.send(embed)
+              message.channel.send({embed})
             });
       } else
 
