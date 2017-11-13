@@ -1,5 +1,5 @@
 # Robot-Hamster
-This is not the source to it this is just used for reporting issues
+This is the source to it please report issues if you find any
 
 Welcome to the Hamster Documentation page!
 
