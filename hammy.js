@@ -1783,4 +1783,4 @@ function clean(text) {
 }
 
 
-client.login('MzMwMDQ0ODA5NjUxODE0NDEy.DDmHWg.i4S2L86t-ovA4sMHYJx5_vGPdhw');
+client.login('your bot token');
