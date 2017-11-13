@@ -479,4 +479,4 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
   console.log("Data Writen")
 
 });
-bot.login("MzMwMDQ0ODA5NjUxODE0NDEy.DDmHWg.i4S2L86t-ovA4sMHYJx5_vGPdhw")
+bot.login('your bot token');
