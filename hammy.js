@@ -182,41 +182,11 @@ client.on('messageUpdate', (message, UpdatedMessage) => {
 });
 
 client.on("guildCreate", guild => {
-    client.user.setPresence({
-        game: {
-            name: `h!help - In ${(Math.round(client.guilds.size * 2 + 5))} servers`,
-            type: 0
-        }
-    });
-    superagent.post(`https://discordbots.org/api/bots/330044809651814412/stats`)
-        .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMDUxNTkyNjExNzI1MzEyMiIsImlhdCI6MTQ5OTkxMzM3Nn0.yi0_HT97N9tduPgdmhR6nlx8Yx3Ly6QsQs5qogZ82mY')
-        .send({
-            server_count: (Math.round(client.guilds.size * 2))
-        })
-        .then(console.log('Updated discordbots.org status.'))
-        .catch(e => console.warn('dbots.org down spam @oliy'));
-    superagent.post(`https://bots.discord.pw/api/bots/330044809651814412/stats`)
-        .set('Authorization', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxMzA1MTU5MjYxMTcyNTMxMjIiLCJyYW5kIjoyMzAsImlhdCI6MTUwMDY2OTUzNn0.5_Z3gldvLVI4shcFlGzRoydO71PkwYwy4_IHYhv3nxE')
-        .send({
-            server_count: (Math.round(client.guilds.size * 2 + 5))
-        })
-        .then(console.log('Updated bots.discord.pw status.'))
-        .catch(e => console.warn('bots.discord.pw down spam @oliy'));
     console.log(`Someone added Hamster to their discord! ${guild.name} Member count: ${guild.memberCount}!`)
 });
 
 client.on('guildDelete', guild => {
-    client.user.setPresence({
-        game: {
-            name: `h!help - In ${(Math.round(client.guilds.size * 2 +5))} servers`,
-            type: 0
-        }
-    });
     console.log(`Someone removed Hamster to their discord! ${guild.name} Member count: ${guild.memberCount}!`)
-});
-
-client.on('disconnect', event => {
-    console.log(`[DISCONNECT] Shard ${client.shard.id}.`);
 });
 
 client.on('error', console.error);
