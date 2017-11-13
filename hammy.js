@@ -1,12 +1,9 @@
 ﻿const Discord = require("discord.js");
-//const fs = require("fs");
 const superagent = require('superagent')
-//const yt = require('ytdl-core');
 const client = new Discord.Client();
 // owner ids for feedback
 const DopplerID = "130515926117253122"
 const LawlietID = "201848192357236736"
-const youtubeAPI = "AIzaSyCcZ8FNsY0AoOriiNLiuDFmXtMdqrE2JHM"
 const botversion = "3.0.2"
 const lynx = "336331925612396547"
 const fs = require("fs");
