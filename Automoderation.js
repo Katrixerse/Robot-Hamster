@@ -4,7 +4,6 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const ms = require('ms');
 let PREF = JSON.parse(fs.readFileSync('./Automod.json', 'utf8'));
-let swearwordstoblock = ["fuck", "bitch"]
 
 bot.on('ready', () => {
   console.log("Online!");
@@ -300,7 +299,26 @@ bot.on("message", async (msg) => {
          bot.channels.get(modlog.id).send(embed);
          }
 
-         if (msg.content.toLowerCase().includes("https://")) {
+         if (msg.content.toLowerCase().includes("www.")) {
+          if (userData.Automod === "off") return;
+          if (userData.Antilinks === "off") return;
+          if (msg.channel.type !== 'text') return;
+          if (msg.member.hasPermission("MANAGE_CHANNELS")) return;
+          let modlog = msg.guild.channels.find('name', 'logs');
+           //let modlog = msg.guild.channels.find("name", "logs").then(msg.delete());
+           //if(!modlog) return; 
+           const embed = new Discord.RichEmbed()
+           .setColor(0xE69A49)
+           .addField("Auto Moderation", ":hamster: Robot Hamster :hamster:")
+           .addField('Moderated User: ', `${msg.member.user.username}#${msg.author.discriminator} (${msg.author.id})`)
+           .addField('Reason: ', 'Website Link')
+           .setFooter('Time: ' + new Date().toDateString());
+           if (!modlog) return msg.channel.send(embed).then(msg.delete());
+           msg.delete();
+           bot.channels.get(modlog.id).send(embed);
+           }
+	
+	         if (msg.content.toLowerCase().includes(".com")) {
           if (userData.Automod === "off") return;
           if (userData.Antilinks === "off") return;
           if (msg.channel.type !== 'text') return;
