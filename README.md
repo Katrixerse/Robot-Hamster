@@ -15,5 +15,5 @@ Check out our commands tab on this wiki for info about commands and stuff.
 
 Milestones:
 
-We have reached 700+ servers on our discord bot 🎉🎉
-We have reached 60+ commands 🎉🎉
+We have reached 1300+ servers on our discord bot 🎉🎉
+We have reached 70+ commands 🎉🎉
