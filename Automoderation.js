@@ -407,4 +407,4 @@ bot.on("message", async (msg) => {
   console.log("Data Writen")
 
 });
-bot.login("MzMwMDQ0ODA5NjUxODE0NDEy.DDmHWg.i4S2L86t-ovA4sMHYJx5_vGPdhw")
+bot.login("Your token")
