@@ -8,10 +8,6 @@ const DopplerID = "130515926117253122";
 const LawlietID = "201848192357236736";
 const DarwinID = "307472480627326987";
 const Cryptic = "314496458915315713"
-const Cleverbot = require("cleverbot-node");
-const clbot = new Cleverbot;
-
-clbot.configure({botapi: "CC4g9xpThz_o9f8ZHK4-00lwnvw"});
 
 bot.on('ready', () => {
   console.log("Hamsters gamble system is online ");
@@ -258,7 +254,7 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
 }
 }
 
-    /* if (msg.content.startsWith(botcode + "roll")) { 
+     if (msg.content.startsWith(botcode + "roll")) { 
       const usage = new Discord.RichEmbed()
       .setColor(0xE69A49)
       .setThumbnail(bot.user.avatarURL)
@@ -267,12 +263,12 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
       var dice = Math.floor(Math.random() * 100) + 1;
       let number = args.slice(0).join(" ");
       let amount = args.slice(1).join(" ");
-      if (amount.length < 1) return msg.channel.sendEmbed(usage);
-      if (number.length < 1) return msg.channel.sendEmbed(usage);
+      if (amount.length < 1) return msg.channel.send({usage});
+      if (number.length < 1) return msg.channel.send({usage});
       if (userData.XP < amount) return msg.channel.send("You dont have enough money to bet that much, you have: $" + userData.XP)
       const gambleamount = (Math.round(amount))
       const numberval = (Math.round(number))
-      console.log("tEST1")
+      If (dice <= number) {
         const embed = new Discord.RichEmbed()
         .setColor(0xE69A49)
         .setTimestamp()
@@ -280,6 +276,7 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
         .setDescription("You have won!")
         .setThumbnail("http://www.pngall.com/wp-content/uploads/2016/04/Dice-Free-Download-PNG.png")
         userData.XP += gambleamount
+	      } else {
         const embed2 = new Discord.RichEmbed()
         .setColor(0xE69A49)
         .setTimestamp()
@@ -288,9 +285,10 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
         .setThumbnail("http://www.pngall.com/wp-content/uploads/2016/04/Dice-Free-Download-PNG.png")
         userData.XP -= gambleamount
         // embeds end
-        if (numberval > dice) return msg.channel.sendEmbed(embed)
-        if (numberval < dice) return msg.channel.sendEmbed(embed2)
-    } */
+        if (numberval > dice) return msg.channel.send({embed})
+        if (numberval < dice) return msg.channel.send({embed2})
+		      }
+    } 
 
     if (msg.content.startsWith(botcode + "awardsgamble")) {
       const embed2 = new Discord.RichEmbed()
