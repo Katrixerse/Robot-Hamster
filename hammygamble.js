@@ -261,8 +261,8 @@ if (slotOne === slotTwo && slotOne === slotThree || slotfour === slotfive && slo
       .addField("Usage: ", "h!roll <number> <amount/bet>")
       .addField("Example: ", "h!roll 50 1000");
       var dice = Math.floor(Math.random() * 100) + 1;
-      let number = args.slice(0).join(" ");
-      let amount = args.slice(1).join(" ");
+      let number = args[0];
+      let amount = args[1];
       if (amount.length < 1) return msg.channel.send({usage});
       if (number.length < 1) return msg.channel.send({usage});
       if (userData.XP < amount) return msg.channel.send("You dont have enough money to bet that much, you have: $" + userData.XP)
