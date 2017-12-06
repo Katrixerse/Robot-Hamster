@@ -124,10 +124,6 @@ bot.on("message", async (msg) => {
     .addField("Awards: ", "None");
 		msg.channel.sendEmbed(embed2)
 	}
-
-if (msg.content.startsWith(botcode + "leaderboard")) { 
-
-}
 	
   if (!XP[msg.author.id]) XP[msg.author.id] = {XP: 0}
 
@@ -193,23 +189,6 @@ if (msg.content.startsWith(botcode + "leaderboard")) {
 		const xpgive = (Math.round(xpamount))
     userData.XP += xpgive
 		msg.channel.send("I have given money to: " + msg.author.username + " $" + xpamount);
-   }
-
-   if (msg.content.startsWith(botcode + "shop")) {
-    const embed = new Discord.RichEmbed()
-    .setColor(0xE69A49)
-    .setThumbnail(bot.user.avatarURL)
-    .setTitle(":hamster: Robot Hamster Shop :hamster:")
-    .setDescription("Upgrades")
-    .addField("Upgrades", 'Winning chance +5% | price: 100k | h!buy chance5', true)
-    .addField('\u200b', "Winning chance +10% | price: 180k | h!buy chance10", true)
-    .addField('\u200b', "Gold digger rank | price: 500k | h!buy rankgold", true)
-    .addField("Packages", 'Bronze +100k | price: $1 | h!buy bronze', true)
-    .addField('\u200b', "Gold +500k | price: $3 | h!buy gold", true)
-    .addField('\u200b', "Diamond +1million | price: $5 | h!buy diamond", true)
-    .setFooter('Time: ' + new Date().toDateString());
-    //bot.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
-    msg.channel.sendEmbed(embed).then(msg.delete())
    }
 
 if (msg.content.startsWith(botcode + "slots")) { 
